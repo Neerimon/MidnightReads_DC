@@ -1,0 +1,45 @@
+/* Settings page container */
+
+.settings.container {
+    display: flex;
+    width: 100%;
+    background-color: rgba(77, 74, 246, 0.315); /* Change background color */
+  }
+
+/* Styles for the page content */
+.page-content {
+    background-color: transparent; /* Change background color */
+    padding: 20px; /* Add padding */
+  }
+  
+  /* Styles for the navigation links */
+
+.nav-2 ul li {
+    display: flex;
+  }
+  
+.nav-2 ul li a {
+    color: #020202; /* Change link text color */
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  
+.nav-2 ul li a:hover {
+    font-size:larger;
+  }
+
+  /* Styles for the profile section */
+  .profile {
+    margin-top: 20px; /* Add margin */
+  }
+  
+  /* Additional styles for the AboutSection component */
+  .about .el-textarea__inner {
+    background-color: #0f0c0c; /* Change textarea background color */
+  }
+
+  .nav-2{
+    display:block;
+    margin-top: 30px;
+    padding: 20px;
+  }

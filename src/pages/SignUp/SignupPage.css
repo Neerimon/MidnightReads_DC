@@ -1,0 +1,136 @@
+.container-signup {
+    display: flex;
+    flex-direction: column;
+    margin: auto;  
+    margin-top: 12px;  
+    margin-bottom: 09px;
+    width: 600px;
+    background: #fff; 
+    padding-bottom: 30px;
+}
+
+.header-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.text-signup {
+    color: rgb(179, 0, 179);
+    font-size: 48px;
+    font-weight: 700;  
+}
+    
+.underline-signup { 
+    width: 61px;
+    height: 6px;
+    background: rgb(179, 0, 179);
+    border-radius: 9px;
+}
+
+.inputs-signup {
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+    
+.input-signup {   
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 480px;
+    height: 80px;
+    background: #eaeaea;
+    border-radius: 6px;
+}
+
+.input-signup img {
+    margin: 0px 30px;
+}
+
+.input-signup input {
+    height: 50px;
+    width: 400px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #797979;  
+    font-size: 19px;  
+}
+
+.submit-container-signup {
+    display: flex;
+    gap: 30px;
+    margin: 30px auto;
+}
+
+.submit-signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 59px;
+    color: #fff;
+    background: rgb(179, 0, 179);
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.gray-signup {
+    background: #eaeaea;
+    color: #676767;
+}
+
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    height: 59px;
+    background: #fff;
+    border-radius: 50px;
+    color: rgb(179, 0, 179);
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 20px auto;
+}
+
+.google-button img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    margin-left: 50px;
+  }
+  
+  .or-text {
+    color: rgba(80, 0, 80, 0.507);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 10px;
+  }
+  
+  .or-line {
+    flex: 1;
+    height: 1px;
+    background-color: rgba(80, 0, 80, 0.486);
+    margin: 0 10px;
+  }
+
+  .underline-login{
+    background-color: rgb(179, 0, 179);
+    width: 15%;
+  }

@@ -1,0 +1,12 @@
+  .sidebar ul {
+    list-style: none; /* Remove default list styles */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+  }
+  
+  

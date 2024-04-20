@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-image: url("./images/bg.jpeg");
+  background-size: cover;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-position: center center; /* This ensures the background is centered in the view */
+  min-height: 100vh; /* Use min-height instead of height */
+  font-family: "Euclid Circular A";
+  background-attachment: fixed;
+
+}
+
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar {
+  transform: translateX(-110%); /*  Position the sidebar offscreen */
+  transition: transform 1.3s ease-out;
+  position: fixed;
+  top: 58px;
+  left: 12px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 260px;
+  border-radius: 16px;
+  padding: 0 16px;
+  border: 1px solid rgb(255 255 255 / 8%);
+  background: rgb(0 0 0 / 30%);
+  backdrop-filter: blur(20px);
+  transition: width 0.4s;
+  z-index: 20;
+}
+
+.sidebar.open {
+  
+  transform: translateX(0%); /* Move the sidebar on screen */
+}
+
+.sidebar button {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 0 16px;
+  color: #e1ecff;
+  transition: background 0.3s;
+}
+
+.sidebar button p:nth-child(2) {
+  flex: 1 1 auto;
+}
+
+.sidebar button:is(.active, :hover) {
+  background: #4e3ffb;
+  color: #e1ecff;
+}
+
+.sidebar button span {
+  transition: 0.3s;
+}
+
+.sidebar button.active > span:nth-child(3) {
+  rotate: -180deg;
+}
+
+.sidebar button:not(.active):hover {
+  background: rgb(255 255 255 / 4%);
+}
+
+.sidebar ul {
+  display: grid;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sub-menu {
+  position: relative;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+}
+
+.sub-menu ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+}
+
+.sub-menu.open {
+  max-height: 500px;
+}
+
+.sub-menu button {
+  padding-left: 54px;
+}
+
+.sub-menu button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 22px;
+  translate: 0 -50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 35%);
+}
+
+
+.rotate-icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+
+
+
+.sidebar .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.navbar button {
+  color: #e1ecff;
+  height: 72px;
+  width: 54px;
+  font-size: 30px;
+  cursor: pointer;
+  flex: 0;
+  margin-left: 20px; /* Adjust this value as needed */
+}
+
+.navbar img {
+  height: 44px;
+  width: 44px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  align-items:center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin-left: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff; /* Change text color */
+}
+
+.navbar li.active {
+  font-weight: bold;
+}
+
+.browse-tab {
+  min-height: calc(100vh - 60px); /* Subtract navbar height */
+}

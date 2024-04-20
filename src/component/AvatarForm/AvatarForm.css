@@ -1,0 +1,26 @@
+
+.section {
+    margin: 0 20px;
+    max-width: auto;
+    padding: 20px;
+
+  }
+  
+  .dropbox {
+    margin-top: 20px;
+  }
+  
+  .dropbox h2 {
+    margin-bottom: 10px;
+  }
+  
+  .dropbox input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  .dropbox img {
+    display: block;
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+  }

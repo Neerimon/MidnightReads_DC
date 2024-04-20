@@ -1,0 +1,15 @@
+/* ProfileImage component styles */
+
+.profile-picture-container {
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    border-radius: 50%; /* Make the image round */
+    overflow: hidden; /* Hide any overflow */
+  }
+  
+  .profile-picture {
+    width: 100%; /* Ensure the image fills its container */
+    height: 100%; /* Ensure the image fills its container */
+    object-fit: cover; /* Cover the entire container */
+  }
+  

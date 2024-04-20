@@ -1,0 +1,7 @@
+/* Account page container */
+
+.Account.container {
+  display: flex;
+  width: 100%;
+  background-color: rgba(77, 74, 246, 0.315); /* Change background color */
+}

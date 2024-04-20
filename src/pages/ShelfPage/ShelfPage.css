@@ -1,0 +1,72 @@
+/* ShelfPage.css */
+
+/* Container */
+.shelf-page {
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Title */
+h2 {
+  text-align: center;
+}
+
+/* Search bar */
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Book list */
+.book-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.book-list li {
+  margin-bottom: 10px;
+}
+
+/* Table */
+.shelf-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.shelf-table th,
+.shelf-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Back button */
+.back-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

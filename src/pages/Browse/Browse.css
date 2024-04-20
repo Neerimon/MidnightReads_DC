@@ -1,0 +1,122 @@
+/* Browse.css */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+}
+
+.search-bar button {
+  padding: 15px 20px; /* Adjusted padding */
+  margin-left: 10px; /* Reduced margin */
+  background-color: #01010f;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 15px;
+}
+
+.search-bar button:hover {
+  background-color: #980f48;
+}
+
+.book-item {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 150px;
+  text-align: center;
+}
+
+.book-item:hover {
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.book-item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.book-details {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.book-item:hover .book-details {
+  opacity: 1;
+}
+
+.book-details p {
+  margin: 1;
+}
+
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Adjusted gap */
+  justify-content: center; /* Center items horizontally */
+}
+
+.filter-button {
+  margin-right: 10px;
+  padding: 15px 20px;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-size: 18px; /* Adjusted font size */
+}
+
+.filter-button:hover {
+  background-color: #a70845;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 10px); /* Adjusted top position */
+  left: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 0; /* Adjusted padding */
+  z-index: 1;
+}
+
+.dropdown-content button {
+  display: block;
+  width: 100%; /* Adjusted width */
+  padding: 10px 20px; /* Adjusted padding */
+  margin: 5px 0; /* Adjusted margin */
+  color: #333;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content button:hover {
+  background-color: #f0f0f0;
+}
