@@ -1,4 +1,22 @@
 /* navbar.css */
+
+.navbar {
+  position:fixed;
+  top: 0;
+  z-index: 1000; /* Ensure it's on top of other content */
+  background-color: none; /* Add your desired background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for better visibility */
+}
+
+.navbar.scrolled {
+  backdrop-filter: blur(10px); /* Adds blur effect */
+  background-color: rgba(255, 255, 255, 0.274); /* Adjust background color and opacity */
+}
+
+.content {
+  padding-top: 10px; /* Adjust padding to accommodate the sticky navbar */
+}
+
 .navbar ul {
     list-style: none;
     padding: 0;
@@ -57,3 +75,14 @@
     display: flex;
     margin-left: auto;
   }
+  
+  .logocon{
+    margin-left: auto;
+  }
+
+  .navbar .logo {
+    margin-left: auto;
+    width: 235px; /* Adjust the width to your desired size */
+    height: auto; /* Automatically adjust the height based on the width */
+  }
+  

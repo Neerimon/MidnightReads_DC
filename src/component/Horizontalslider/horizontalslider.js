@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './horizontalslider.css';
 
-const Horizontalslider = ({ images, title }) => {
+const Horizontalslider = ({ books, title }) => {
   const [current, setCurrent] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(10);
 
@@ -39,11 +40,11 @@ const Horizontalslider = ({ images, title }) => {
   }, []);
 
   const handlePrev = () => {
-    setCurrent(current > 0 ? current - 1 : images.length - slidesToShow);
+    setCurrent(current > 0 ? current - 1 : books.length - slidesToShow);
   };
   
   const handleNext = () => {
-    setCurrent(current < images.length - slidesToShow ? current + 1 : 0);
+    setCurrent(current < books.length - slidesToShow ? current + 1 : 0);
   };
   
   return (
@@ -51,14 +52,15 @@ const Horizontalslider = ({ images, title }) => {
       <div className="horizontalslider">
         <h1 style={{ fontWeight: 'bold' }}>{title}</h1>
         <div className="cards-container">
-          {images.slice(current, current + slidesToShow).map((image, index) => (
-            <div
-              className="card"
-              key={index}
-              style={{ flexBasis: `${100 / slidesToShow}%` }}
-            >
-              <img src={image} alt={`Book ${index + 1}`} className="card-image" />
-            </div>
+          {books.slice(current, current + slidesToShow).map((book, index) => (
+            <Link key={index} to={`/books?id=${book.id}`}>
+              <div
+                className="card"
+                style={{ flexBasis: `${100 / slidesToShow}%` }}
+              >
+                <img src={book.volumeInfo.imageLinks.thumbnail} alt={`Book ${index + 1}`} className="card-image" />
+              </div>
+            </Link>
           ))}
         </div>
         <button className="prev" onClick={handlePrev}>❮</button>

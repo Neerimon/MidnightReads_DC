@@ -1,3 +1,6 @@
+  .sidebar{
+    position: fixed;
+  }
   .sidebar ul {
     list-style: none; /* Remove default list styles */
     padding: 0;

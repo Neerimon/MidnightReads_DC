@@ -11,6 +11,9 @@ import Account from './pages/Account/AccountPage';
 import Profile from './pages/Profile/Profile';
 import Signup from './pages/SignUp/SignupPage';
 import Login from './pages/Login/LoginPage'; 
+import AboutPage1 from './pages/AboutPage/AboutPage1';
+import LandingPage from './pages/LandingPage/LandingPage';
+import BookDetailsPage from './pages/BookDetailsPage/BookDetailsPage';
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import'./App.css';
@@ -44,7 +47,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar toggleSidebar={toggleSidebar} activeTab={activeTab} handleTabChange={handleTabChange} />
+      <Navbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} activeTab={activeTab} handleTabChange={handleTabChange}/>
         <Sidebar isSidebarOpen={isSidebarOpen}/>
         <Routes>
           <Route path="/HomePage" element={<Home />} />
@@ -55,8 +58,11 @@ function App() {
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/AboutPage1" element={<AboutPage1 />} />
+          <Route path="/LandingPage" element={<LandingPage />} />
+          <Route path="/book/:id" element={<BookDetailsPage />} />
           {/* Redirect to Home page if route doesn't match any defined routes */}
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/LandingPage" />} />
         </Routes>
         {/* Display the Alert component with the message from the URL parameter */}
         {alertMessage && <Alert message={alertMessage} visible={true} />}
