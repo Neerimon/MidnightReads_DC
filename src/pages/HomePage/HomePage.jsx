@@ -1,3 +1,4 @@
+// HomePage.jsx
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Slider from '../../component/Slider/slider';
@@ -13,20 +14,11 @@ function Home() {
 
   const [books, setBooks] = useState({});
 
-  const [genreImages, setGenreImages] = useState({
-    'Top from all genre': [],
-    'crime': [],
-    'mystery': [],
-    'thriller': [],
-    'romance': []
-  });
-
   useEffect(() => {
     fetchBooks("science fiction", 15);
     fetchBooks("mystery", 15);
     fetchBooks("romance", 15);
     fetchBooks("horror", 15);
-    fetchBooks("comic", 10);
     fetchBooks("manga", 15);
   }, []);
 
@@ -61,8 +53,7 @@ function Home() {
           {/* Display books for each genre */}
           {Object.entries(books).map(([genre, genreBooks]) => (
             <div key={genre} className="category-row">
-              <h2>{genre}</h2>
-              <Horizontalslider books={genreBooks} />
+              <Horizontalslider title={genre} books={genreBooks} />
             </div>
           ))}
         </div>

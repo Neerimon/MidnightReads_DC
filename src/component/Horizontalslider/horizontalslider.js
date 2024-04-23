@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './horizontalslider.css';
 
-const Horizontalslider = ({ books, title }) => {
+const Horizontalslider = ({ images, title, books }) => {
   const [current, setCurrent] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(10);
 
@@ -40,11 +40,11 @@ const Horizontalslider = ({ books, title }) => {
   }, []);
 
   const handlePrev = () => {
-    setCurrent(current > 0 ? current - 1 : books.length - slidesToShow);
+    setCurrent(current > 0 ? current - 1 : images.length - slidesToShow);
   };
   
   const handleNext = () => {
-    setCurrent(current < books.length - slidesToShow ? current + 1 : 0);
+    setCurrent(current < images.length - slidesToShow ? current + 1 : 0);
   };
   
   return (
@@ -52,15 +52,30 @@ const Horizontalslider = ({ books, title }) => {
       <div className="horizontalslider">
         <h1 style={{ fontWeight: 'bold' }}>{title}</h1>
         <div className="cards-container">
-          {books.slice(current, current + slidesToShow).map((book, index) => (
-            <Link key={index} to={`/books?id=${book.id}`}>
-              <div
-                className="card"
-                style={{ flexBasis: `${100 / slidesToShow}%` }}
-              >
-                <img src={book.volumeInfo.imageLinks.thumbnail} alt={`Book ${index + 1}`} className="card-image" />
-              </div>
-            </Link>
+        {books &&
+          books.map((book, index) => (
+            <div key={index}>
+              {/* Make each book card clickable */}
+              <Link to={`/book/${book.id}`}>
+                <div className="book-card">
+                  {book.volumeInfo.imageLinks &&
+                    book.volumeInfo.imageLinks.thumbnail && (
+                      <img
+                        src={book.volumeInfo.imageLinks.thumbnail}
+                        alt={book.volumeInfo.title}
+                      />
+                    )}
+                  <div className="book-details">
+                    <h3 className="book-title">{book.volumeInfo.title}</h3>
+                    <p className="book-author">
+                      {book.volumeInfo.authors &&
+                        book.volumeInfo.authors.join(", ")}
+                    </p>
+                    {/* Add more book details as needed */}
+                  </div>
+                </div>
+              </Link>
+            </div>
           ))}
         </div>
         <button className="prev" onClick={handlePrev}>❮</button>
