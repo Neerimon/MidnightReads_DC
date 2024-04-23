@@ -1,4 +1,3 @@
-// HomePage.jsx
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Slider from '../../component/Slider/slider';
@@ -17,26 +16,22 @@ function Home() {
   useEffect(() => {
     fetchBooks("science fiction", 15);
     fetchBooks("mystery", 15);
-    fetchBooks("romance", 15);
     fetchBooks("horror", 15);
-    fetchBooks("manga", 15);
+    fetchBooks("history", 15);
   }, []);
 
-  const fetchBooks = async (genre, maxResults) => {
+  const fetchBooks = async (query, maxResults) => {
     try {
-      // Generate a random start index
-      const startIndex = Math.floor(Math.random() * 100); // Adjust 100 as needed
-      
-      // Fetch books with the random start index
-      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&maxResults=${maxResults}&startIndex=${startIndex}`);
+      // Fetch books based on the provided query
+      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}`);
       
       const data = await response.json();
       setBooks(prevState => ({
         ...prevState,
-        [genre]: data.items
+        [query]: data.items
       }));
     } catch (error) {
-      console.error(`Error fetching ${genre} books:`, error);
+      console.error(`Error fetching books for ${query}:`, error);
     }
   };
 
@@ -51,9 +46,9 @@ function Home() {
         </div>
         <div className="book-display-container">
           {/* Display books for each genre */}
-          {Object.entries(books).map(([genre, genreBooks]) => (
-            <div key={genre} className="category-row">
-              <Horizontalslider title={genre} books={genreBooks} />
+          {Object.entries(books).map(([query, genreBooks]) => (
+            <div key={query} className="category-row">
+              <Horizontalslider title={query} books={genreBooks} />
             </div>
           ))}
         </div>

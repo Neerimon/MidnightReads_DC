@@ -7,6 +7,8 @@ import password_icon from '../../images/password.png';
 import google_icon from '../../images/google-logo.png';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup,updateProfile } from "firebase/auth";
 import Alert from '../../component/Alert/AlertError';
+import { firestoreInstance } from '../../firebase/firebase';
+import { collection, doc, setDoc } from "firebase/firestore";
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -23,6 +25,10 @@ const Signup = () => {
       // Update user profile with the provided name
       await updateProfile(credential.user, { displayName: name });
   
+      // Create Firestore user document with the user's email as the identifier
+      const userDocRef = doc(firestoreInstance, 'users', email);
+      await setDoc(userDocRef, { name, email });
+  
       setIsSignedUp(true);
     } catch (error) {
       console.error('Signup error:', error.message);
@@ -38,8 +44,9 @@ const Signup = () => {
       // Extract username from the Google account
       const googleUsername = credential.user.displayName;
   
-      // Update user profile with the Google username
-      await updateProfile(credential.user, { displayName: googleUsername });
+      // Create Firestore user document with the user's email as the identifier
+      const userDocRef = doc(firestoreInstance, 'users', credential.user.email);
+      await setDoc(userDocRef, { name: googleUsername, email: credential.user.email });
   
       setIsSignedUp(true);
     } catch (error) {

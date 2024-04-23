@@ -38,7 +38,6 @@ const Horizontalslider = ({ images, title, books }) => {
       window.removeEventListener('resize', updateSlidesToShow);
     };
   }, []);
-
   const handlePrev = () => {
     setCurrent(current > 0 ? current - 1 : images.length - slidesToShow);
   };
@@ -65,21 +64,11 @@ const Horizontalslider = ({ images, title, books }) => {
                         alt={book.volumeInfo.title}
                       />
                     )}
-                  <div className="book-details">
-                    <h3 className="book-title">{book.volumeInfo.title}</h3>
-                    <p className="book-author">
-                      {book.volumeInfo.authors &&
-                        book.volumeInfo.authors.join(", ")}
-                    </p>
-                    {/* Add more book details as needed */}
-                  </div>
                 </div>
               </Link>
             </div>
           ))}
         </div>
-        <button className="prev" onClick={handlePrev}>❮</button>
-        <button className="next" onClick={handleNext}>❯</button>
       </div>
     </div>
   );

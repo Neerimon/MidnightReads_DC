@@ -67,3 +67,57 @@
     line-height: 1.5;
     margin-bottom: 20px;
   }
+
+  .button-container {
+    margin-top: 20px;
+    display: flex;
+  }
+  
+  .like-button,
+  .add-to-list-button,
+  .read-on-google-play-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #510180; /* Primary color */
+    color: #fff; /* White text */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .like-button:hover,
+  .add-to-list-button:hover,
+  .read-on-google-play-button {
+    background-color: #1f2c3a; /* Darker shade of primary color on hover */
+  }
+  
+  .like-button.liked {
+    background-color: #dc3545; /* Red color for liked button */
+  }
+  
+  /* Styling for heart icon */
+  .like-button::before {
+
+    margin-right: 5px;
+  }
+  
+  .add-to-list-button::before {
+    content: '\271A'; /* Unicode for check mark symbol */
+    margin-right: 5px;
+  }
+  
+  /* Styling for read on Google Play button */
+.read-on-google-play-button {
+  margin-top: 10px;
+  background-color: #4caf50; /* Green color */
+}
+
+.read-on-google-play-button:hover {
+  background-color: #388e3c; /* Darker shade of green on hover */
+}
+
+.description-container {
+  font-size: 18px; /* Adjust the font size as needed */
+}
