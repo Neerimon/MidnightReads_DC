@@ -6,9 +6,21 @@ function SearchBar({ show, onClose }) {
   const [recentSearches, setRecentSearches] = useState([]);
 
   const handleSearch = () => {
-    // Add logic to handle search
-    // You can update recentSearches state here
+    // Check if the search query is not empty
+    if (searchQuery.trim() !== '') {
+      // Update recent searches list with the current search query
+      setRecentSearches([searchQuery, ...recentSearches.slice(0, 4)]); // Limit recent searches to 5 items
+  
+      // Perform search logic here (e.g., fetching search results)
+      // This is where you would typically make an API request or perform any other search-related operation
+      // For demonstration purposes, let's just log the search query to the console
+      console.log('Search query:', searchQuery);
+  
+      // Close the search bar after searching
+      onClose();
+    }
   };
+  
 
   return (
     <div className={`search-popup ${show ? 'show' : ''}`}>
@@ -24,7 +36,11 @@ function SearchBar({ show, onClose }) {
         <button className="search-button" onClick={handleSearch}>Search</button>
         <div className="recent-searches">
           <p>Recent Searches:</p>
-          {/* Render recent searches here */}
+          <ul>
+            {recentSearches.map((search, index) => (
+              <li key={index}>{search}</li>
+            ))}
+          </ul>
         </div>
         <button className="close-button" onClick={onClose}>Close</button>
       </div>
@@ -33,6 +49,3 @@ function SearchBar({ show, onClose }) {
 }
 
 export default SearchBar;
-
-
-

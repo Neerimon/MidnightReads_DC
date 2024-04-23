@@ -18,7 +18,7 @@ function DeleteAccount() {
       user.delete().then(() => {
         // Account deleted successfully
         console.log('Account deleted successfully.');
-        window.location.href = `/?alert=The%20account%20has%20been%20detected!`;
+        window.location.href = `/LandingPage?alert=The%20account%20has%20been%20detected!`;
       }).catch((error) => {
         // An error occurred while deleting the account
         console.error('Error deleting account:', error);

@@ -5,8 +5,9 @@
     margin-top: 12px;  
     margin-bottom: 09px;
     width: 600px;
-    background: #fff; 
+    background: #1b1c3588; 
     padding-bottom: 30px;
+    border-radius: 10%;
 }
 
 .header-signup {
@@ -19,7 +20,7 @@
 }
 
 .text-signup {
-    color: rgb(179, 0, 179);
+    color: rgb(140, 128, 255);
     font-size: 48px;
     font-weight: 700;  
 }
@@ -27,7 +28,7 @@
 .underline-signup { 
     width: 61px;
     height: 6px;
-    background: rgb(179, 0, 179);
+    background: rgb(140, 128, 255);
     border-radius: 9px;
 }
 
@@ -44,7 +45,7 @@
     margin: auto;
     width: 480px;
     height: 80px;
-    background: #eaeaea;
+    background: #160c0cf1;
     border-radius: 6px;
 }
 
@@ -74,8 +75,8 @@
     align-items: center;
     width: 220px;
     height: 59px;
-    color: #fff;
-    background: rgb(179, 0, 179);
+    color: #160c0cf1;
+    background: rgb(140, 128, 255);
     border-radius: 50px;
     font-size: 19px;
     font-weight: 700;
@@ -93,7 +94,7 @@
     justify-content: center;
     width: 420px;
     height: 59px;
-    background: #fff;
+    background: #160c0cf1;
     border-radius: 50px;
     color: rgb(179, 0, 179);
     font-size: 19px;

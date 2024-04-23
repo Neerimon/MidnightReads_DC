@@ -9,6 +9,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Get instances of Storage, Firestore, and Auth
 const storageInstance = getStorage(firebaseApp);
 const firestoreInstance = getFirestore(firebaseApp);
+const db = getFirestore(firebaseApp);
 const authInstance = getAuth(firebaseApp); // Get the auth instance
 
-export { firebaseApp, storageInstance, firestoreInstance, authInstance }; // Export authInstance along with other instances
+export { firebaseApp, storageInstance, firestoreInstance, authInstance, db }; // Export authInstance along with other instances

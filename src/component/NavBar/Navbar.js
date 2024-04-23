@@ -19,17 +19,16 @@ const Navbar = ({ isSidebarOpen, toggleSidebar, activeTab, handleTabChange }) =>
       if (
         sidebarRef.current && // Sidebar element exists
         !sidebarRef.current.contains(event.target) && // Click is outside the sidebar
-        !event.target.closest('.sidebar-content') && // Click is not on the sidebar button
+        event.target.closest('.sidebar-content') && // Click is not on the sidebar button or its children
         isSidebarOpen // Sidebar is currently open
       ) {
         toggleSidebar(false); // Close the sidebar
       }
     };
-    
 
     window.addEventListener('scroll', handleScroll);
     document.addEventListener('mousedown', handleOutsideClick);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mousedown', handleOutsideClick);
@@ -73,7 +72,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar, activeTab, handleTabChange }) =>
               <Link to="/browse">Browse</Link>
             </li>
           </ul>
-          <img src={Logo}  className="logo" />
+          <img src={Logo} alt="Logo" className="logo" />
         </nav>
       );
     }

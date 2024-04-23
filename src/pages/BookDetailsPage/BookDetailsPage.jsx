@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import './BookDetailsPage.css';
 import { firestoreInstance, authInstance } from '../../firebase/firebase';
 import { collection, doc, updateDoc, deleteField, getDoc } from "firebase/firestore";
+import AddToListPopup from '../../component/AddToListPopup/AddToListPopup';
 
 function BookDetailsPage() {
   const { id } = useParams(); // Get the book ID from route parameters
@@ -10,7 +11,16 @@ function BookDetailsPage() {
   const [bookInfo, setBookInfo] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
   const [isAvailableOnGooglePlay, setIsAvailableOnGooglePlay] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
+  const handleAddToList = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+  
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
@@ -50,10 +60,6 @@ function BookDetailsPage() {
     fetchBookDetails();
   }, [id]);
 
-  const handleAddToList = () => {
-    // Implement logic to add the book to a list
-    console.log('Book added to list!');
-  };
 
   const handleLike = async () => {
     try {
@@ -107,11 +113,12 @@ function BookDetailsPage() {
               </button>
               <button className="add-to-list-button" onClick={handleAddToList}>Add to List</button>
             </div>
+            {showPopup && <AddToListPopup onClose={handleClosePopup} bookId={id} />}
             {isAvailableOnGooglePlay && (
-                <a href={`${bookInfo.canonicalVolumeLink}&source=gbs_api`} target="_blank" rel="noopener noreferrer">
-                  <button className="read-on-google-play-button">Read the book here</button>
-                </a>
-              )}
+              <a href={`${bookInfo.canonicalVolumeLink}&source=gbs_api`} target="_blank" rel="noopener noreferrer">
+                <button className="read-on-google-play-button">Read the book here</button>
+              </a>
+            )}
           </div>
         </div>
         <div className="content-diff">
@@ -125,7 +132,7 @@ function BookDetailsPage() {
         </div>
       </div>
     </div>
-  );
+  );  
 }
 
 export default BookDetailsPage;

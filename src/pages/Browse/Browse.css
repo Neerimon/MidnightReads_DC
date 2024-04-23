@@ -99,7 +99,7 @@
   position: absolute;
   top: calc(100% + 10px); /* Adjusted top position */
   left: 0;
-  background-color: #fff;
+  background-color:none;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px 0; /* Adjusted padding */
@@ -107,7 +107,7 @@
 }
 
 .dropdown-content button {
-  display: block;
+  display:block;
   width: 100%; /* Adjusted width */
   padding: 10px 20px; /* Adjusted padding */
   margin: 5px 0; /* Adjusted margin */

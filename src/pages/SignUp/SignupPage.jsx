@@ -27,7 +27,11 @@ const Signup = () => {
   
       // Create Firestore user document with the user's email as the identifier
       const userDocRef = doc(firestoreInstance, 'users', email);
-      await setDoc(userDocRef, { name, email });
+      await setDoc(userDocRef, {});
+  
+      // Create Firestore "your library" document with the user's email as the identifier
+      const libraryDocRef = doc(firestoreInstance, 'your_library', email);
+      await setDoc(libraryDocRef, {}); // You can pass initial data here if needed
   
       setIsSignedUp(true);
     } catch (error) {
@@ -46,7 +50,11 @@ const Signup = () => {
   
       // Create Firestore user document with the user's email as the identifier
       const userDocRef = doc(firestoreInstance, 'users', credential.user.email);
-      await setDoc(userDocRef, { name: googleUsername, email: credential.user.email });
+      await setDoc(userDocRef, {});
+  
+      // Create Firestore "your library" document with the user's email as the identifier
+      const libraryDocRef = doc(firestoreInstance, 'your_library', credential.user.email);
+      await setDoc(libraryDocRef, {}); // You can pass initial data here if needed
   
       setIsSignedUp(true);
     } catch (error) {

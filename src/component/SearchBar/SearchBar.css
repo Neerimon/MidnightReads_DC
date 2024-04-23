@@ -64,8 +64,34 @@
     margin-right: 10px;
   }
   
-  
-  .recent-searches {
-    /* Styles for recent searches */
-  }
+/* Styles for the recent searches */
+.recent-searches {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.recent-searches-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recent-search-item {
+  margin-bottom: 5px;
+}
+
+.recent-search-link {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.recent-search-link:hover {
+  color: #007bff;
+}
+
+
   

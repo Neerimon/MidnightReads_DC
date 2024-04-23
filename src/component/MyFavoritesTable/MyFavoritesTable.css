@@ -1,0 +1,37 @@
+.my-favorites-container {
+    background-color: #29292967;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.836);
+  }
+  
+  .favorites-heading {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:30px;
+    color: #ffffff;
+  }
+  
+  .favorites-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sr-no2,
+  .cover3,
+  .name2 {
+    font-size: 15px;
+    text-align: left;
+  }
+  
+  .sr-no2 {
+    width: 10%;
+  }
+  
+  .cover2 {
+    width: 30%;
+  }
+  
+  .name2 {
+    font-size: 20px;
+    width: 60%;
+  }
+  

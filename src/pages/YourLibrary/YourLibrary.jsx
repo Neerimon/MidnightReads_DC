@@ -1,32 +1,45 @@
-// YourLibrary.jsx
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './YourLibrary.css';
 import backgroundImage from '../../images/YourLibrary.jpg';
-import AddShelfPopup from '../../component/AddShelfPopup/AddShelfPopup';
-import ShelfPage from '../ShelfPage/ShelfPage';
+import { collection, getDocs } from 'firebase/firestore'; // Import collection and getDocs
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { authInstance, db } from '../../firebase/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const YourLibrary = () => {
-  const [isPopupOpen, setPopupOpen] = useState(false);
-  const [shelves, setShelves] = useState([]);
-  const [selectedShelf, setSelectedShelf] = useState(null); // State to keep track of the selected shelf
+  const [bookIds, setBookIds] = useState([]);
+  const [user] = useAuthState(authInstance);
 
-  const togglePopup = () => {
-    setPopupOpen(!isPopupOpen);
-  };
-
-  const handleAddShelf = (newShelf) => {
-    setShelves([newShelf, ...shelves]); // Add new shelf to the beginning of the array
-    setPopupOpen(false); // Close the popup
-  };
-
-  const handleShelfClick = (shelfName) => {
-    setSelectedShelf(shelfName); // Set the selected shelf
-  };
-
-  const navigateToLibrary = () => {
-    setSelectedShelf(null); // Reset selected shelf
-  };
+  useEffect(() => {
+    const fetchBookIds = async () => {
+      try {
+        if (!user) {
+          return; // Return early if user object is null
+        }
+  
+        const docRef = doc(db, 'your_library', user.email); // Reference the document using user's email
+        console.log("Document Reference:", docRef); // Add this line
+  
+        const docSnap = await getDoc(docRef);
+        console.log("Document Snapshot:", docSnap); // Add this line
+  
+        if (docSnap.exists()) {
+          const bookIds = docSnap.data().bookIds; // Assuming bookIds is the field containing an array of book IDs
+          console.log("Book IDs:", bookIds); // Add this line
+          setBookIds(bookIds);
+        } else {
+          console.log("Document does not exist");
+        }
+      } catch (error) {
+        console.error('Error fetching book IDs:', error);
+      }
+    };
+  
+    fetchBookIds();
+  }, [user]);
+  
+  
+  
 
   return (
     <div>
@@ -38,31 +51,14 @@ const YourLibrary = () => {
           <p>Explore, organize, and customize your virtual library</p>
         </div>
       </header>
-
-      <div className="your-library-container">
-        {/* If a shelf is selected, render the ShelfPage */}
-        {selectedShelf ? (
-          <ShelfPage shelfName={selectedShelf} navigateToLibrary={navigateToLibrary} />
-        ) : (
-          /* Render shelves */
-          shelves.map((shelf, index) => (
-            <div key={index} className="shelf-card" style={{ backgroundColor: shelf.color }} onClick={() => handleShelfClick(shelf.name)}>
-              <h3>{shelf.name}</h3>
-            </div>
-          ))
-        )}
-
-        {/* Render the "Add New Shelves" card if no shelf is selected */}
-        {!selectedShelf && (
-          <div className="add-shelves-card" onClick={togglePopup}>
-            <div className="add-shelves-icon">+</div>
-            <div className="add-shelves-text">Add New Shelves</div>
-          </div>
-        )}
+      <div className="book-list">
+        <h2>Your Book IDs:</h2>
+        <ul>
+          {bookIds && bookIds.map((id) => (
+            <li key={id}>{id}</li>
+          ))}
+        </ul>
       </div>
-
-      {/* Render the AddShelfPopup component */}
-      <AddShelfPopup isOpen={isPopupOpen} onClose={togglePopup} onAddShelf={handleAddShelf} />
     </div>
   );
 }

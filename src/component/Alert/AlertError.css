@@ -13,11 +13,13 @@
 
 /* Modal content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #10101f77;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  font-size:calc(100% + 5px);
+  font-weight: bold;
 }
 
 /* Close button */
