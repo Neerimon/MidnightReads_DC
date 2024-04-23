@@ -1,0 +1,46 @@
+/* SwipeToSlide.css */
+
+.slider-container {
+    width: 100%;
+  }
+  
+  .slick-slide {
+    padding: 0 10px;
+  }
+  
+  .slick-list {
+    margin: 0 -10px;
+  }
+  
+  .blank-card {
+    width: 100%;
+    height: 300px; /* Height of the vertical rectangle */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for book cover */
+  .book-cover {
+    width: 100%;
+    height: 80%; /* Height of the book cover within the vertical rectangle */
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px 5px 0 0; /* Rounded corners only at the top */
+  }
+  
+  /* Style for book details */
+  .book-details {
+    padding: 10px;
+  }
+  
+  .book-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .book-author {
+    color: #666;
+  }
+  

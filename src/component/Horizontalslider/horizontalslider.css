@@ -16,6 +16,10 @@
 .cards-container {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  margin-bottom: 20px;
 }
 
 .card {
@@ -25,18 +29,6 @@
   margin: 10px;
   border-radius: 20px; /* Rounded corners for the card */
   overflow: hidden;
-}
-
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image covers the card area */
-  border-radius: 10px; /* Rounded corners for the image */
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .prev, .next {
@@ -61,4 +53,31 @@
 
 .prev:disabled, .next:disabled {
   visibility: hidden;
+}
+
+.book-card {
+  width: 200px; /* Adjust as needed */
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.book-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.book-details {
+  padding: 10px;
+}
+
+.book-title {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.book-author {
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0;
 }

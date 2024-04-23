@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import '../../App.css';
+import { useLocation } from 'react-router-dom';
 import Slider from '../../component/Slider/slider';
 import Horizontalslider from '../../component/Horizontalslider/horizontalslider';
-import Browse from '../Browse/Browse';
+import './HomePage.css';
+import Alert from '../../component/Alert/AlertError';
 
 function Home() {
   const [activeTab] = useState('Home');
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const alertMessage = searchParams.get('alert');
+
+  const [books, setBooks] = useState({});
+
   const [genreImages, setGenreImages] = useState({
     'Top from all genre': [],
     'crime': [],
@@ -15,59 +22,50 @@ function Home() {
   });
 
   useEffect(() => {
-    async function fetchGenreImages() {
-      const genres = ['Top from all genre', 'crime', 'mystery', 'thriller', 'romance'];
-      const genreImagesData = {};
+    fetchBooks("science fiction", 15);
+    fetchBooks("mystery", 15);
+    fetchBooks("romance", 15);
+    fetchBooks("horror", 15);
+    fetchBooks("comic", 10);
+    fetchBooks("manga", 15);
+  }, []);
 
-      for (const genre of genres) {
-        try {
-          const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${genre}&maxResults=40`);
-          const data = await response.json();
-          const books = data.items || [];
-          const randomBooks = shuffle(books).slice(0, 20); // Selecting 10 random books from the shuffled list
-          const images = randomBooks.map(book => {
-            const imageLinks = book.volumeInfo.imageLinks || {};
-            return imageLinks.thumbnail || '';
-          });
-
-          genreImagesData[genre] = images;
-        } catch (error) {
-          console.error(`Error fetching images for ${genre}:`, error);
-          genreImagesData[genre] = [];
-        }
-      }
-
-      setGenreImages(genreImagesData);
+  const fetchBooks = async (genre, maxResults) => {
+    try {
+      // Generate a random start index
+      const startIndex = Math.floor(Math.random() * 100); // Adjust 100 as needed
+      
+      // Fetch books with the random start index
+      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&maxResults=${maxResults}&startIndex=${startIndex}`);
+      
+      const data = await response.json();
+      setBooks(prevState => ({
+        ...prevState,
+        [genre]: data.items
+      }));
+    } catch (error) {
+      console.error(`Error fetching ${genre} books:`, error);
     }
-
-    fetchGenreImages();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Function to shuffle an array
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
+  };
 
   return (
-    <div className="App">
-      <div className="content">
-        {activeTab === 'Home' && (
-          <>
-            <Slider />
-            {Object.entries(genreImages).map(([genre, images]) => (
-              <Horizontalslider key={genre} images={images} title={genre} />
-            ))}
-          </>
-        )}
-        {activeTab === 'Browse' && (
-          <div className="browse-tab">
-            <Browse />
-          </div>
-        )}
+    <div >
+       <header>
+       <Slider />
+       </header>
+       <div className="home-container">
+        <div>
+          {alertMessage && <Alert message={alertMessage} visible={true} />}
+        </div>
+        <div className="book-display-container">
+          {/* Display books for each genre */}
+          {Object.entries(books).map(([genre, genreBooks]) => (
+            <div key={genre} className="category-row">
+              <h2>{genre}</h2>
+              <Horizontalslider books={genreBooks} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
